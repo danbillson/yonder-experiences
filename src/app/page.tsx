@@ -1,3 +1,4 @@
+import { ArrowRightIcon } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -57,7 +58,9 @@ export default function Home() {
               <TableCell>
                 {exp.redeemValues.map((r) => (
                   <div key={r.points}>
-                    {r.points} = {r.value}
+                    {r.points}{" "}
+                    <ArrowRightIcon className="inline-block size-3" /> £
+                    {r.value}
                   </div>
                 ))}
               </TableCell>

@@ -1,0 +1,21 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+When adding a new experience from a screenshot, fill in the following data based on this example
+```
+  {
+    name: "DELLI",
+    description: "A platform to shop the best independent food and drink",
+    category: "Shopping",
+    earnMultiplier: "5x",
+    redeemValues: [
+      { points: 3260, value: 15 },
+      { points: 6520, value: 30 },
+      { points: 13_040, value: 60 },
+    ],
+    link: "",
+  },
+```
+The redeem values will all be equal in terms of points to value and the screenshot should always show the middle value which you can calculate the other values from. List redeemValues in ascending order.

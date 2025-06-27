@@ -8,24 +8,15 @@ import {
 } from "@/components/ui/table";
 import { experiences } from "@/lib/experiences";
 
-function getBestValuePerThousand(exp) {
-  // Extract numeric value from e.g. '£15'
-  const values = exp.redeemValues.map((r) => {
-    const amount = Number.parseFloat(r.value.replace(/[^\d.]/g, ""));
-    return (amount / r.points) * 1000;
-  });
-  const best = Math.max(...values);
-  return best;
-}
-
-function formatValuePerThousand(value) {
-  return `£${value.toFixed(2)}/1k pts`;
+function calculateValue(exp) {
+  const [value] = exp.redeemValues;
+  return (value.value / value.points) * 1000;
 }
 
 export default function Home() {
   // Sort experiences by best value per 1000 points (descending)
   const sortedExperiences = [...experiences].sort(
-    (a, b) => getBestValuePerThousand(b) - getBestValuePerThousand(a)
+    (a, b) => calculateValue(b) - calculateValue(a)
   );
 
   return (
@@ -46,14 +37,18 @@ export default function Home() {
           {sortedExperiences.map((exp) => (
             <TableRow key={exp.name}>
               <TableCell>
-                <a
-                  className="underline"
-                  href={exp.link}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  {exp.name}
-                </a>
+                {exp.link ? (
+                  <a
+                    className="underline"
+                    href={exp.link}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {exp.name}
+                  </a>
+                ) : (
+                  exp.name
+                )}
               </TableCell>
               <TableCell className="max-w-[200px] truncate">
                 {exp.description}
@@ -66,9 +61,7 @@ export default function Home() {
                   </div>
                 ))}
               </TableCell>
-              <TableCell>
-                {formatValuePerThousand(getBestValuePerThousand(exp))}
-              </TableCell>
+              <TableCell>£{calculateValue(exp).toFixed(2)}</TableCell>
               <TableCell>{exp.category}</TableCell>
             </TableRow>
           ))}

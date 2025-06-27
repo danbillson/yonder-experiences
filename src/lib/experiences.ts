@@ -111,8 +111,8 @@ export const experiences: Experience[] = [
     category: "Shopping",
     earnMultiplier: "5x",
     redeemValues: [
-      { points: 2755, value: 25 },
-      { points: 5510, value: 12.5 },
+      { points: 2755, value: 12.5 },
+      { points: 5510, value: 25 },
       { points: 11_020, value: 50 },
     ],
     link: "",

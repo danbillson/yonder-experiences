@@ -2,7 +2,7 @@
 
 import { CategorySelect } from "@/components/category-select";
 import { ExperienceCard } from "@/components/experience-card";
-import { ExperienceTable } from "@/components/experience-table";
+import { ExperienceChart } from "@/components/experience-chart";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useExperiences } from "@/hooks/use-experiences";
 
@@ -32,7 +32,7 @@ export default function Home() {
         <ExperienceCard experience={second} />
         <ExperienceCard experience={third} />
       </div>
-      <ExperienceTable experiences={rest} />
+      <ExperienceChart experiences={rest} />
       <p className="mt-10 text-muted-foreground text-sm">
         This tool is not affiliated with Yonder. All information is provided for
         informational purposes only.

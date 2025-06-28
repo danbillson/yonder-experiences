@@ -1,4 +1,4 @@
-export type RedeemValue = { points: number; value: string };
+export type RedeemValue = { points: number; value: number };
 export type Experience = {
   name: string;
   description: string;

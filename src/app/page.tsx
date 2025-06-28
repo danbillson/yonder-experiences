@@ -7,9 +7,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { experiences } from "@/lib/experiences";
+import { type Experience, experiences } from "@/lib/experiences";
 
-function calculateValue(exp) {
+function calculateValue(exp: Experience) {
   const [value] = exp.redeemValues;
   return (value.value / value.points) * 1000;
 }
@@ -22,7 +22,9 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-4xl p-8">
-      <h1 className="mb-6 font-bold text-4xl">Yonder Experiences</h1>
+      <h1 className="mb-20 text-center font-bold text-6xl tracking-tighter">
+        Yonder <span className="italic">E</span>xperiences
+      </h1>
       <Table>
         <TableHeader>
           <TableRow>

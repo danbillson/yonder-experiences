@@ -1,12 +1,21 @@
 "use client";
 
+import { Suspense } from "react";
 import { CategorySelect } from "@/components/category-select";
 import { ExperienceCard } from "@/components/experience-card";
 import { ExperienceChart } from "@/components/experience-chart";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useExperiences } from "@/hooks/use-experiences";
 
-export default function Home() {
+export default function HomePage() {
+  return (
+    <Suspense>
+      <Home />
+    </Suspense>
+  );
+}
+
+function Home() {
   const [first, second, third, ...rest] = useExperiences();
 
   return (

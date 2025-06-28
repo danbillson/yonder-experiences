@@ -1,8 +1,14 @@
+"use client";
+
 import { CategorySelect } from "@/components/category-select";
+import { ExperienceCard } from "@/components/experience-card";
 import { ExperienceTable } from "@/components/experience-table";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useExperiences } from "@/hooks/use-experiences";
 
 export default function Home() {
+  const [first, second, third, ...rest] = useExperiences();
+
   return (
     <div className="mx-auto max-w-4xl p-8">
       <div className="mb-6 text-center">
@@ -21,7 +27,12 @@ export default function Home() {
       <div className="mb-10 grid place-items-center">
         <CategorySelect />
       </div>
-      <ExperienceTable />
+      <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-3">
+        <ExperienceCard experience={first} />
+        <ExperienceCard experience={second} />
+        <ExperienceCard experience={third} />
+      </div>
+      <ExperienceTable experiences={rest} />
       <p className="mt-10 text-muted-foreground text-sm">
         This tool is not affiliated with Yonder. All information is provided for
         informational purposes only.

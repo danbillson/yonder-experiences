@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowRightIcon } from "lucide-react";
-import { useQueryState } from "nuqs";
 import {
   Table,
   TableBody,
@@ -10,27 +9,18 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { type Experience, experiences } from "@/lib/experiences";
+import type { Experience } from "@/lib/experiences";
 
 function calculateValue(exp: Experience) {
   const [value] = exp.redeemValues;
   return (value.value / value.points) * 1000;
 }
 
-export function ExperienceTable() {
-  const [category] = useQueryState("category");
+type ExperienceTableProps = {
+  experiences: Experience[];
+};
 
-  const filteredExperiences = experiences
-    .filter(
-      (exp) =>
-        category === null ||
-        (category === "other" &&
-          exp.category.toLocaleLowerCase() !== "dining" &&
-          exp.category.toLocaleLowerCase() !== "shopping") ||
-        exp.category.toLocaleLowerCase() === category.toLocaleLowerCase()
-    )
-    .sort((a, b) => calculateValue(b) - calculateValue(a));
-
+export function ExperienceTable({ experiences }: ExperienceTableProps) {
   return (
     <Table>
       <TableHeader>
@@ -44,7 +34,7 @@ export function ExperienceTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {filteredExperiences.map((exp) => (
+        {experiences.map((exp) => (
           <TableRow key={exp.name}>
             <TableCell>
               {exp.link ? (

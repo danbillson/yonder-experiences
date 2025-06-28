@@ -22,9 +22,12 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-4xl p-8">
-      <h1 className="mb-20 text-center font-bold text-6xl tracking-tighter">
-        Yonder <span className="italic">E</span>xperiences
-      </h1>
+      <div className="mb-20 text-center">
+        <h1 className="mb-6 font-bold text-6xl tracking-tighter">
+          Yonder <span className="italic">E</span>xperiences
+        </h1>
+        <p className="text-lg">Find the best value for your Yonder points</p>
+      </div>
       <Table>
         <TableHeader>
           <TableRow>
